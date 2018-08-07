@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
-  var ownerid = "476418894551056382";
+  var ownerid = "254225860649943051";
   var avatar = args[1];
 
   if(message.author.id == ownerid){
