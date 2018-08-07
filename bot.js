@@ -5,7 +5,6 @@ const fs = require('fs');
 bot.commands = new Discord.Collection();
 const weather = require('weather-js');
 const memory = require('memory');
-const TKF = require('./tokenfile.json');
 
 let prefix = ',,,';
 
@@ -58,4 +57,4 @@ bot.on('message', message => {
 });
 
 
-bot.login(TKF.token1);
+bot.login(process.env.TOKEN);
