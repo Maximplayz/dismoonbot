@@ -8,8 +8,8 @@ module.exports.run = async (bot, message, args) => {
   if(message.member.roles.has(spamrole) || message.author.id == ownerid){
 
 
-  if(!args[0]) return message.channel.send('Mention someone as first argument.');
-  if(!args[1]) return message.channel.send('Tell me a amount as second argument.');
+  if(!args[0]) return message.channel.send('dude, mention someone as first argument, or whatever');
+  if(!args[1]) return message.channel.send('idiot, tell me a amount as second argument');
   if(args[1] > 25) return message.channel.send('Too much spam, stay within the amount of 25 >:(');
 
   message.delete()
