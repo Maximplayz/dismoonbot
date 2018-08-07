@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
-  let spamrole = message.guild.roles.get("476418894551056382");
+  let spamrole = message.guild.roles.get("476418894551056384");
   let ownerid = "254225860649943051";
 
   if(message.member.roles.has(spamrole) || message.author.id == ownerid){
@@ -20,7 +20,9 @@ module.exports.run = async (bot, message, args) => {
   let number = args[1];
 
   while (counter < number) {
-    message.channel.send(`${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n`);
+    message.channel.send(`${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n`).then( m => {
+      m.delete()
+    })
     counter++;
   }
 
