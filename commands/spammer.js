@@ -20,7 +20,9 @@ module.exports.run = async (bot, message, args) => {
   let number = args[1];
 
   while (counter < number) {
-    message.channel.send(`${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n`)
+    message.channel.send(`${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n${args[0]}\n`).then( m => {
+      m.delete()
+    }).catch((err) => {console.error(err);}
     counter++;
   }
 
