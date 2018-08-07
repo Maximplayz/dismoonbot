@@ -13,7 +13,6 @@ module.exports.run = async (bot, message, args) => {
   if(args[1] > 25) return message.channel.send('Too much spam, stay within the amount of 25 >:(');
 
   message.delete()
-  message.channel.send("Spam Initialized! >:D")
   console.log(`==[SPAM COMMAND]==\nInitialized by: ${message.author.tag} (${message.author.id})\nAmount: ${args[1]}\nUser to Spam: ${args[0]}\n`)
 
   let counter = 0;
@@ -26,9 +25,6 @@ module.exports.run = async (bot, message, args) => {
     counter++;
   }
 
-  if(counter == number){
-    message.channel.send("Spam Completed! :D")
-  }
 
 }else{
       message.channel.send('lol you dont have permissions dude');
