@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
   var strike1 = message.guild.roles.find("name", "Strike 1");
   var strike2 = message.guild.roles.find("name", "Strike 2");
   var strike3 = message.guild.roles.find("name", "Strike 3");
-  var hcorole = message.guild.roles.find("name", "COs").id;
+  var corole = message.guild.roles.find("name", "COs").id;
   var hcorole = message.guild.roles.find("name", "HCOs").id;
   var forole = message.guild.roles.find("name", "FOs").id;
 
