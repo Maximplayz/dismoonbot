@@ -16,6 +16,7 @@ module.exports.run = async (bot, message, args) => {
           .addField(`${prefix}quote <msgID>`, 'Quotes a Message')
           .addField(`${prefix}purge <number>`, 'Lets people with Manage Messages permission clean the chat')
           .addField(`${prefix}spammer <mention <number>`, 'Spams the shit outta someone')
+          .addField(`${prefix}announce <text>`, 'Makes a Announcement')
           .addField(`[BOT OWNER] ${prefix}eval`, 'Evaluates Javascript code')
           .addField(`[BOT OWNER] ${prefix}die`, 'Terminates Connection to Discord')
           .addField(`[BOT OWNER] ${prefix}hook`, 'Sends a Hook if Parameters are filled out')
