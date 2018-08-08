@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
     let embed = new Discord.RichEmbed()
     .setColor('#30E4FF')
     .setTitle(title)
-    .setFooter("", message.author.avatarURL)
+    .setFooter(" ", message.author.avatarURL)
     .setDescription(args.join(' '))
     .setTimestamp()
     message.channel.send(embed)
