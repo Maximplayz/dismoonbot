@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
 
   if(authormem.roles.has(corole) || authormem.roles.has(hcorole) || authormem.roles.has(forole)){
 
-  var embed = new Discord.Richembed()
+  var embed = new Discord.RichEmbed()
   .addField("Unit to Strike", "", true)
   .setDescription("**Reason:** " + reason)
   .setFooter(`Striked by: ${authormem.nickname}`, message.author.avatarURL)
