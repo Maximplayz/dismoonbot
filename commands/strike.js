@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
 
   var memtostrike = message.mentions.members.first();
   var authormem = message.guild.members.get(message.author.id);
-  var reason = args.slice(args[1].length + 1);
+  var reason = args.join(' ')
   var striker = message.author.tag;
   var strike1 = message.guild.roles.find("name", "Strike 1");
   var strike2 = message.guild.roles.find("name", "Strike 2");
@@ -36,6 +36,7 @@ exports.run = (client, message, args) => {
     memtostrike.addRole(strike1)
   }
 
+  message.channel.send(embed)
   message.delete();
 } else {
   message.channel.send('No permissions to strike.')
