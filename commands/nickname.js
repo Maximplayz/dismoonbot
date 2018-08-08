@@ -12,7 +12,9 @@ exports.run = (client, message, args) => {
     if(name.length > 32) return message.channel.send('name cant be longer than 32 chars')
 
     botmem.setNickname(name)
-    message.channel.send(`changing nickname to ${name}`)
+    message.channel.send(`changing nickname to ${name}`).then(msg => {
+    msg.delete(2500)})
+    message.delete(2500)
   } else {
     message.channel.send('no permissions')
   }
