@@ -4,7 +4,8 @@ module.exports.run = async (bot, message, args) => {
 
   if(message.author.id === '254225860649943051'){
 
-    message.channel.send('Terminating Connection to Discord.')
+    message.channel.send('**Forcefully stopping bot process and terminating connection to discord**').then(msg => {
+    msg.react('🛠️')})
     bot.destroy();
 
   } else {
