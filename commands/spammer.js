@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
   let spamrole = message.guild.roles.get("476418894551056384");
   let ownerid = "254225860649943051";
-  let member = message.guild.member(message.author);
+  let member = message.guild.members.get(message.author.id);
 
   if(member.roles.has(spamrole) || message.author.id == ownerid){
 
