@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
     .setTitle(title)
     .setFooter("", message.author.avatarURL)
     .setDescription(args.join(' '))
-    .setTimestamp
+    .setTimestamp()
     message.channel.send(embed)
     message.delete()
   } else {
