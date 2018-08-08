@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
-  let spamrole = message.guild.roles.find("name", "SpamPerms");
+  let spamrole = message.guild.roles.find("name", "SpamPerms").id;
   let member = message.guild.members.get(message.author.id);
   console.log(member)
 

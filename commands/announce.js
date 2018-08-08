@@ -3,9 +3,9 @@ const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
 
   var memauth = message.guild.members.get(message.author.id);
-  let HCOROLE = message.guild.roles.find("name", "HCOs");
-  let COROLE = message.guild.roles.find("name", "COs");
-  let FOROLE = message.guild.roles.find("name", "FOs");
+  let HCOROLE = message.guild.roles.find("name", "HCOs").id;
+  let COROLE = message.guild.roles.find("name", "COs").id;
+  let FOROLE = message.guild.roles.find("name", "FOs").id;
   var title = "";
 
   if(memauth.roles.has(COROLE)){
