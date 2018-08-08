@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
-  let NUM = args[0];
+  let NUM = args[0] + 1;
   let AUTHOR = message.author.tag
   let GUILDMEM = message.member
 
