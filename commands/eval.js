@@ -11,7 +11,7 @@ function clean(text) {
         return text;
 }
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     if(message.author.id === "254225860649943051") {
 
@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
 
     } else {
 
-            message.channel.send(':x: Bot Owner only.').then(msg => {
+            message.channel.send(':x: client Owner only.').then(msg => {
                 msg.react('🚫')
             })
 

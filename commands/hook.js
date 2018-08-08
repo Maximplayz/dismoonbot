@@ -53,7 +53,7 @@ function hook(channel, title, message, color, avatar) {
 
 }
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     message.delete();
 

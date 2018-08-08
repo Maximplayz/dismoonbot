@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
   let GAME = args.join(' ');
   let AUTHID = message.author.id;
@@ -8,12 +8,12 @@ module.exports.run = async (bot, message, args) => {
 
   if(AUTHID === LOREY){
 
-    bot.user.setActivity(GAME, { type: 'PLAYING' })
+    client.user.setActivity(GAME, { type: 'PLAYING' })
     message.channel.send(`Game set to: **${GAME}**`).then(msg => {msg.delete(2500)})
 
   } else {
 
-    message.channel.send('Bot Owner Only').then(msg => {
+    message.channel.send('client Owner Only').then(msg => {
     msg.react('❗')})
 
   }

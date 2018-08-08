@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
   var memauth = message.guild.members.get(message.author.id);
   let HCOROLE = message.guild.roles.find("name", "HCOs").id;

@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
 const weather = require('weather-js');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     weather.find({search: args.join(' '), degreeType: 'C'}, function(err, result){
         if (err) message.channel.send(err);
-        
+
         var current = result[0].current;
         var location = result[0].location;
 

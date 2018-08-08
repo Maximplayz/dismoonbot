@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
   let loopEmbed = new Discord.RichEmbed();
-  loopEmbed.setTitle('All Bot Guilds')
+  loopEmbed.setTitle('All client Guilds')
   loopEmbed.setColor()
 
-  bot.guilds.forEach( g => {
+  client.guilds.forEach( g => {
       let owner = g.owner;
       let ownerid = owner.user.id;
       let ownertag = owner.user.tag;

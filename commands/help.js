@@ -2,13 +2,13 @@ const Discord = require('discord.js');
 
 var prefix = ',,,';
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
         message.react('💡')
 
           let em = new Discord.RichEmbed()
           .setColor("#0000FF")
-          .addField(`${prefix}botinfo`, 'Shows info about the Bot')
+          .addField(`${prefix}clientinfo`, 'Shows info about the client')
           .addField(`${prefix}userinfo <user>`, 'Shows info about a User')
           .addField(`${prefix}serverinfo`, 'Shows info about the Server')
           .addField(`${prefix}weather <city>`, 'Shows weather of a City')
@@ -17,10 +17,10 @@ module.exports.run = async (bot, message, args) => {
           .addField(`${prefix}purge <number>`, 'Lets people with Manage Messages permission clean the chat')
           .addField(`${prefix}spammer <mention <number>`, 'Spams the shit outta someone')
           .addField(`${prefix}announce <text>`, 'Makes a Announcement')
-          .addField(`[BOT OWNER] ${prefix}eval`, 'Evaluates Javascript code')
-          .addField(`[BOT OWNER] ${prefix}die`, 'Terminates Connection to Discord')
-          .addField(`[BOT OWNER] ${prefix}hook`, 'Sends a Hook if Parameters are filled out')
-          .addField(`[BOT OWNER] ${prefix}game`, 'Changes Bot Game Globally')
+          .addField(`[client OWNER] ${prefix}eval`, 'Evaluates Javascript code')
+          .addField(`[client OWNER] ${prefix}die`, 'Terminates Connection to Discord')
+          .addField(`[client OWNER] ${prefix}hook`, 'Sends a Hook if Parameters are filled out')
+          .addField(`[client OWNER] ${prefix}game`, 'Changes client Game Globally')
           message.channel.send(em)
 
 

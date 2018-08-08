@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
   let ownerid = "254225860649943051";
   var newname = args.join(' ')
 
   if(message.author.id == ownerid){
-    bot.user.setUsername(newname)
+    client.user.setUsername(newname)
     message.channel.send('setting new name, please wait')
     message.delete();
   } else {

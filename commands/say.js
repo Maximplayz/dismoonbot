@@ -7,7 +7,7 @@ function clean(text) {
         return text;
 }
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     console.log(`${message.author.tag} (${message.author.id}) has used the say command. Content: "${message.content}"`)
     message.channel.send(args.join(' '))

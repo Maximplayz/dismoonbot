@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     if(!message.mentions.members.first()) return message.channel.send(':x: Please Mention a User.');
 
@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
     let USTAT = InfoUser.user.presence.status;
     let LASTMSG = InfoUser.user.lastMessage;
     let LASTMSGID = InfoUser.user.lastMessageID;
-    let UBOT = InfoUser.user.bot;
+    let Uclient = InfoUser.user.client;
     let KICKABLE = InfoUser.kickable;
     let BANNABLE = InfoUser.bannable;
     let HASADMIN = InfoUser.hasPermission('ADMINISTRATOR');
@@ -30,8 +30,8 @@ module.exports.run = async (bot, message, args) => {
     .addField('Highest Role', `${UHROLE}\n(${UHROLEID})`, true)
     .addField('Is Admin?', HASADMIN, true)
     .addField('User Status', USTAT, true)
-    .addField('Kickable / Bannable by Bot?', `1: ${KICKABLE}\n2: ${BANNABLE}`, true)
-    .addField('Is Bot?', UBOT, true)
+    .addField('Kickable / Bannable by client?', `1: ${KICKABLE}\n2: ${BANNABLE}`, true)
+    .addField('Is client?', Uclient, true)
     .addField('Created At', CREAT, true)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
     .setThumbnail(UAVURL)
