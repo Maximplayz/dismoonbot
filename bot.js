@@ -1,61 +1,37 @@
-const Discord = require('discord.js');
-const ms = require('ms');
-const bot = new Discord.Client();
-const fs = require('fs');
-bot.commands = new Discord.Collection();
-const weather = require('weather-js');
-const memory = require('memory');
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const fs = require("fs");
+const math = require("math");
+const prefix = ",,,";
 
-let prefix = ',,,';
+var PCKG = require("./package.json");
 
-fs.readdir("./commands", (err, file) => {
-
-    if(err) console.error();(err);
-
-    let jsfile = file.filter(f => f.split(".").pop() === "js")
-    if(jsfile.length <= 0){
-        console.log('Could not find any Commands!');
-        return;
-    }
-
- jsfile.forEach((f, i) =>{
-    let props = require(`./commands/${f}`);
-    console.log(`${f} loaded!`);
-    bot.commands.set(props.help.name, props);
- });
-
+// This loop reads the /events/ folder and attaches each event file to the appropriate event.
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    let eventFunction = require(`./events/${file}`);
+    let eventName = file.split(".")[0];
+    // super-secret recipe to call events with all their proper arguments *after* the `client` var.
+    client.on(eventName, (...args) => eventFunction.run(client, ...args));
+  });
 });
 
-bot.on('ready', () => {
+client.on("message", message => {
+  if (message.author.bot) return;
+  if(message.content.indexOf(prefix) !== 0) return;
 
-    bot.user.setActivity(`im a bot`)
-    bot.user.setStatus('dnd')
+  // This is the best way to define args. Trust me.
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
 
-    var mb = memory();
-
-    console.log(' ')
-    console.log(`${bot.user.tag} is ready on ${bot.guilds.size} servers.`)
-    console.log(' ')
-    console.log(`Current Memory usage ${mb}mb`)
-    console.log(' ')
-
+  // The list of if/else is replaced with those simple 2 lines:
+  try {
+    let commandFile = require(`./commands/${command}.js`);
+    commandFile.run(client, message, args);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
-bot.on('message', message => {
-    if(message.author.bot) return;
-    if(message.channel.type === 'dm') return;
-    if(!message.content.startsWith(prefix)) return;
-
-    let messageArray = message.content.split(' ');
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if(commandfile) commandfile.run(bot,message,args);
-
-
-
-});
-
-
-bot.login(process.env.TOKEN);
+client.login(process.env.TOKEN);
