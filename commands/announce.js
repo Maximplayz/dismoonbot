@@ -25,6 +25,7 @@ module.exports.run = async (bot, message, args) => {
     .setFooter("By: " + message.author.username, message.author.avatarURL)
     .setDescription(args.join(' '))
     message.channel.send(embed)
+    message.delete()
   } else {
     message.channel.send('no permissions')
   }
