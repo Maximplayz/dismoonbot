@@ -16,11 +16,13 @@ module.exports.run = async (client, message, args) => {
           .addField(`${prefix}quote <msgID>`, 'Quotes a Message')
           .addField(`${prefix}purge <number>`, 'Lets people with Manage Messages permission clean the chat')
           .addField(`${prefix}spammer <mention <number>`, 'Spams the shit outta someone')
+          .addField(`${prefix}nickname`, "Changes Server Nickname, restricted to Admins")
           .addField(`${prefix}announce <text>`, 'Makes a Announcement')
-          .addField(`[client OWNER] ${prefix}eval`, 'Evaluates Javascript code')
-          .addField(`[client OWNER] ${prefix}die`, 'Terminates Connection to Discord')
-          .addField(`[client OWNER] ${prefix}hook`, 'Sends a Hook if Parameters are filled out')
-          .addField(`[client OWNER] ${prefix}game`, 'Changes client Game Globally')
+          .addField(`[BOT OWNER] ${prefix}username`, 'Changes the Global Username')
+          .addField(`[BOT OWNER] ${prefix}eval`, 'Evaluates Javascript code')
+          .addField(`[BOT OWNER] ${prefix}die`, 'Terminates Connection to Discord')
+          .addField(`[BOT OWNER] ${prefix}hook`, 'Sends a Hook if Parameters are filled out')
+          .addField(`[BOT OWNER] ${prefix}game`, 'Changes client Game Globally')
           message.channel.send(em)
 
 
