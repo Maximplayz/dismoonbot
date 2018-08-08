@@ -4,7 +4,6 @@ exports.run = (client, message, args) => {
 
   var memtostrike = message.mentions.members.first();
   var authormem = message.guild.members.get(message.author.id);
-  var memmen = args[1];
   var reason = args.slice(1).join(' ');
   var striker = message.author.tag;
   var strike1 = message.guild.roles.find("name", "Strike 1");
@@ -26,7 +25,6 @@ exports.run = (client, message, args) => {
     message.channel.send('**Mentioned user already has __3 Strikes__!**')
   } else if(memtostrike.roles.has(strike2.id)){
     embed.addField("**Strike Number**", strike3.name)
-    message.channel.send(memmen)
     if(memtostrike.kickable){
       embed.addField("**3 Strikes Reached**", "Due to reaching 3 strikes the unit will be kicked now.")
       memtostrike.kick("3 Strikes Reached")
@@ -38,13 +36,11 @@ exports.run = (client, message, args) => {
     embed.addField("**Strike Number**", strike2.name)
     embed.setColor('#ee7300')
     memtostrike.addRole(strike2)
-    message.channel.send(memmen)
     message.channel.send(embed)
   } else {
     embed.addField("**Strike Number**", strike1.name)
     embed.setColor('#ffdb00')
     memtostrike.addRole(strike1)
-    message.channel.send(memmen)
     message.channel.send(embed)
   }
 
