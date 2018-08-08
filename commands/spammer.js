@@ -3,10 +3,9 @@ const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
 
   let spamrole = message.guild.roles.get("476418894551056384");
-  let ownerid = "254225860649943051";
   let member = message.guild.members.get(message.author.id);
 
-  if(member.roles.has(spamrole) || message.author.id == ownerid){
+  if(member.roles.has(spamrole)){
 
 
   if(!args[0]) return message.channel.send('dude, mention someone as first argument, or whatever');
