@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
   var memtostrike = message.mentions.members.first();
   var authormem = message.guild.members.get(message.author.id);
   var reason = args.slice(args[1].length + 1);
-  var striker = author.user.tag;
+  var striker = message.author.user.tag;
   var strike1 = message.guild.roles.find("name", "Strike 1");
   var strike2 = message.guild.roles.find("name", "Strike 2");
   var strike3 = message.guild.roles.find("name", "Strike 3");
