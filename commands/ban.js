@@ -10,13 +10,18 @@ exports.run = (client, message, args) => {
 
     if(!mem) return message.channel.send('Bans a User from this Server.\n\nUsage: `,,,ban **<member>** <reason>`')
     if(!mem.bannable) return message.channel.send('im unable to kick that member')
+    if(!mem.nickname){
+      name = mem.username;
+    } else {
+      name = mem.nickname;
+    }
     if(!reason){
       reason = "No reason provided."
     }
 
     let embed = new Discord.RichEmbed()
     .setTitle('User has been banned.')
-    .setColor('')
+    .setColor('#B70000')
     .addField('**Unit to Ban**', mem.nickname)
     .addField('**Reason**', reason)
 
