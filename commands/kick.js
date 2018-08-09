@@ -25,6 +25,8 @@ exports.run = (client, message, args) => {
     .setColor('#DB7C00')
     .addField('**Unit to Kick**', )
     .addField('**Reason**', reason)
+    .setFooter(`Kicked by: ${authormem.nickname}`)
+    .setTimestamp()
 
     mem.send(`**${authormem.nickname}** has kicked you for "**${reason}**."`)
 

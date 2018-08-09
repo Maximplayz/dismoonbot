@@ -24,6 +24,8 @@ exports.run = (client, message, args) => {
     .setColor('#B70000')
     .addField('**Unit to Ban**', mem.nickname)
     .addField('**Reason**', reason)
+    .setFooter(`Banned by: ${authormem.nickname}`)
+    .setTimestamp()
 
     mem.send(`**${authormem.nickname}** has banned you for "**${reason}**."`)
 
