@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
 
   if(authormem.hasPermissions('ADMINISTRATOR')){
 
-    if(!mem) retunr message.channel.send('mention a user')
+    if(!mem) return message.channel.send('Bans a User from this Server.\n\nUsage: `,,,ban **<member>** <reason>`')
     if(!mem.bannable) return message.channel.send('im unable to kick that member')
     if(!reason){
       reason = "No reason provided."
