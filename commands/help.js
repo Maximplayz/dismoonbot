@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
           .addField(`${prefix}nickname`, "Changes Server Nickname, restricted to Admins")
           .addField(`${prefix}announce <text>`, 'Makes a Announcement')
           .addField(`${prefix}kick <mention> <reason>`, 'Kicks a Member, restricted to peeps that have perms')
-          .addField(`${prefix}ban <mention> <reason>`, 'Kicks a Member, restricted to peeps that have perms')
+          .addField(`${prefix}ban <mention> <reason>`, 'Bans a Member, restricted to peeps that have perms')
           .addField(`[BOT OWNER] ${prefix}username`, 'Changes the Global Username')
           .addField(`[BOT OWNER] ${prefix}eval`, 'Evaluates Javascript code')
           .addField(`[BOT OWNER] ${prefix}die`, 'Terminates Connection to Discord')
