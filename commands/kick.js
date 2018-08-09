@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
     if(!mem) return message.channel.send('Kicks a User from this Server.\n\nUsage: `,,,kick **<member>** <reason>`')
     if(!mem.kickable) return message.channel.send('im unable to kick that member')
     if(!mem.nickname){
-      name = mem.user.username;
+      name = `No nickname set.\n${mem.user.tag}`
     } else {
       name = mem.nickname;
     }
