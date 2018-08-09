@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
     if(!mem) return message.channel.send('Bans a User from this Server.\n\nUsage: `,,,ban **<member>** <reason>`')
     if(!mem.bannable) return message.channel.send('im unable to kick that member')
     if(!mem.nickname){
-      name = mem.username;
+      name = mem.user.username;
     } else {
       name = mem.nickname;
     }
@@ -24,10 +24,10 @@ exports.run = (client, message, args) => {
     .setColor('#B70000')
     .addField('**Unit to Ban**', mem.nickname)
     .addField('**Reason**', reason)
-    .setFooter(`Banned by: ${authormem.nickname}`)
+    .setFooter(`Banned by: ${authormem.nickname}`, authormem.avatarURL)
     .setTimestamp()
 
-    mem.send(`**${authormem.nickname}** has banned you for "**${reason}**."`)
+    mem.send(`**${authormem.nickname}** has banned you for "**${reason}**"`)
 
     mem.ban(7, reason)
     message.channel.send(embed)

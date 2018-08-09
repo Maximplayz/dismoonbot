@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
     if(!mem) return message.channel.send('Kicks a User from this Server.\n\nUsage: `,,,kick **<member>** <reason>`')
     if(!mem.kickable) return message.channel.send('im unable to kick that member')
     if(!mem.nickname){
-      name = mem.username;
+      name = mem.user.username;
     } else {
       name = mem.nickname;
     }
@@ -25,10 +25,10 @@ exports.run = (client, message, args) => {
     .setColor('#DB7C00')
     .addField('**Unit to Kick**', )
     .addField('**Reason**', reason)
-    .setFooter(`Kicked by: ${authormem.nickname}`)
+    .setFooter(`Kicked by: ${authormem.nickname}`, authormem.avatarURL)
     .setTimestamp()
 
-    mem.send(`**${authormem.nickname}** has kicked you for "**${reason}**."`)
+    mem.send(`**${authormem.nickname}** has kicked you for "**${reason}**"`)
 
     mem.kick(reason)
     message.channel.send(embed)
