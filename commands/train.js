@@ -25,6 +25,7 @@ exports.run = (client, message, args) => {
     mem.addRole(enlROLE)
     mem.addRole(pvtROLE)
     mem.addRole(soROLE)
+    mem.removeRole(rctROLE)
     mem.setNickname(`PVT.  ${mem.user.username}`)
     message.react('✅')
   } else {
