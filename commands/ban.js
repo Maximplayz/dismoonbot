@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
 
   if(authormem.hasPermissions('ADMINISTRATOR')){
 
-    if(!mem) return message.channel.send('Bans a User from this Server.\n\nUsage: `,,,ban **<member>** <reason>`')
+    if(!mem) return message.channel.send('Bans a User from this Server.\n\nUsage: `,,,ban <member> <reason>`')
     if(!mem.bannable) return message.channel.send('im unable to kick that member')
     if(!mem.nickname){
       name = `${mem.user.tag}\n(**${mem.user.id}**)`

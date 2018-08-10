@@ -16,6 +16,10 @@ exports.run = (client, message, args) => {
 
   var newname = `PVT. ${mem.user.username}`
 
+  if(!args){
+    message.channel.send('Finishes training of a user (Adds Roles, Removes RCT)\n\nCommand Usage:\n`,,,train <mention>`')
+  }
+
   if(authmem.roles.has(vertrain) || authmem.roles.has(corole) || authmem.roles.has(hcorole) || authmem.roles.has(forole)){
 
   if(mem.roles.has(rctROLE)){
