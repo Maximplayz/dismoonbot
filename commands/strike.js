@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
   var hcorole = message.guild.roles.find("name", "HCOs").id;
   var forole = message.guild.roles.find("name", "FOs").id;
 
-  if(!args){
+  if(!args[1]){
     message.channel.send('Strikes a member\n\nCommand usage:\n`,,,strike <member> <reason>`')
   }
 
