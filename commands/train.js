@@ -18,14 +18,14 @@ exports.run = (client, message, args) => {
     message.channel.send('Finishes training of a user (Adds Roles, Removes RCT)\n\nCommand Usage:\n`,,,train <mention>`')
   }
 
-  var newname = `PVT. ${mem.user.username}`
-
 
   if(authmem.roles.has(vertrain) || authmem.roles.has(corole) || authmem.roles.has(hcorole) || authmem.roles.has(forole)){
 
   if(mem.roles.has(rctROLE)){
-    mem.addRoles(enlROLE, pvtROLE, soROLE)
-    mem.setNickname(newname)
+    mem.addRole(enlROLE)
+    mem.addRole(pvtROLE)
+    mem.addRole(soROLE)
+    mem.setNickname(`PVT.  ${mem.user.username}`)
     message.react('✅')
   } else {
     message.channel.send('Mentioned member does not have the Recruit role / is already trained')
