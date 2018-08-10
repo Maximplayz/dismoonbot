@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
 
   var newname = `PVT. ${mem.user.username}`
 
-  if(!args[1]){
+  if(!mem){
     message.channel.send('Finishes training of a user (Adds Roles, Removes RCT)\n\nCommand Usage:\n`,,,train <mention>`')
   }
 
