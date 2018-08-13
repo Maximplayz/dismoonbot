@@ -61,7 +61,7 @@ module.exports.run = async (client, message, args) => {
         return hook(message.channel, 'Hook Usage', `<hook <title> <message> [HEXcolor] [avatarURL]\n\n**<> is required\n [] is optional**`, 'FC8469', 'https://cdn4.iconfinder.com/data/icons/global-logistics-3/512/129-612.png')
     }
 
-    let hookArgs = message.content.slice(prefix.lenght + 4).split(",");
+    let hookArgs = message.content.slice(prefix.length + 4).split(",");
 
     hook (message.channel, hookArgs[0], hookArgs[1], hookArgs[2], hookArgs[3]);
 
