@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
     .setTitle("New Vote:")
     .setColor(clr)
     .setDescription(vtext)
-    .setFooter(`Vote by ${authormem.nickname}`, message.author.avatarURL)
+    .setFooter(`Vote by ${authmem.nickname}`, message.author.avatarURL)
     message.channel.send(embed).then(m => {
       m.react('✅')
       m.react('❎')
