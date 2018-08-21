@@ -4,6 +4,9 @@ exports.run = (client, message, args) => {
 
     var authmem = message.guild.members.get(message.author.id);
     var vtext = args.join(" ")
+
+    if(!vtext) return message.channel.send('You cant vote on nothing, what the fuck?')
+
     var admrole = message.guild.roles.find("name", "Discord Admin").id;
 
     if(authmem.roles.has(admrole)) {
