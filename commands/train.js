@@ -2,9 +2,8 @@ const Discord = require("discord.js");
 
 exports.run = (client, message, args) => {
 
-  var member = message.guild.member(message.author);
-  var totrain1 = message.mentions.members.first();
-  var totrain = message.guild.member(totrain1);
+  var mem = message.mentions.authmems.first();
+  var authmem = message.guild.authmems.get(message.author.id);
 
   var director = message.guild.roles.find("name", "Director").id
   var cmd = message.guild.roles.find("name", "Commander").id
@@ -17,34 +16,39 @@ exports.run = (client, message, args) => {
   var train = message.guild.roles.find("name", "Trainer").id
   var trainee = message.guild.roles.find("name", "Trainee").id
 
-  if(!totrain1) return message.channel.send(":x: Please Mention a member to train");
+  if(!mem) return message.channel.send(":x: Please Mention a Member to train");
 
-  if(!totrain.roles.has(trainee)) {
-    if(member.roles.has(director)) {
-        totrain.roles.add(trainee)
-        message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+  if(!mem.roles.has(trainee)) {
+    if(authmem.roles.has(director)) {
+        mem.roles.add(trainee)
+        mem.setNickname('Trainee '+mem.username)
+        message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
         message.delete();
-    } else if(member.roles.has(cmd) || member.roles.has(vcmd)) {
-      totrain.roles.add(trainee)
-      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+    } else if(authmem.roles.has(cmd) || authmem.roles.has(vcmd)) {
+      mem.roles.add(trainee)
+      mem.setNickname('Trainee '+mem.username)
+      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
       message.delete();
-    } else if(member.roles.has(fcmd) || member.roles.has(fvcmd)) {
-      totrain.roles.add(trainee)
-      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+    } else if(authmem.roles.has(fcmd) || authmem.roles.has(fvcmd)) {
+      mem.roles.add(trainee)
+      mem.setNickname('Trainee '+mem.username)
+      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
       message.delete();
-    } else if(member.roles.has(firstov) || member.roles.has(secondov)) {
-      totrain.roles.add(trainee)
-      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+    } else if(authmem.roles.has(firstov) || authmem.roles.has(secondov)) {
+      mem.roles.add(trainee)
+      mem.setNickname('Trainee '+mem.username)
+      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
       message.delete();
-    } else if(member.roles.has(htrain) || member.roles.has(train)) {
-      totrain.roles.add(trainee)
-      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+    } else if(authmem.roles.has(htrain) || authmem.roles.has(train)) {
+      mem.roles.add(trainee)
+      mem.setNickname('Trainee '+mem.username)
+      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
       message.delete();
     } else {
       message.channel.send(":x: No permissions")
     }
   } else {
-    message.channel.send(":x: That member already is trained!")
+    message.channel.send(":x: That Member already is trained!")
   }
 
 }
