@@ -1,9 +1,7 @@
-const Discord = require('discord.js');
-
+// events
 exports.run = (client) => {
 
-  console.log(`\nBot is ready at ${client.readyAt}!\n`)
-  client.user.setActivity('im a bot lol')
-  client.user.setStatus('dnd')
+  console.log(`\nBot is ready and logged in as ${client.user.tag} (${client.user.id})\n`)
+  console.log(`Serving ${client.users.size} users on ${client.guilds.size} guilds`)
 
 }

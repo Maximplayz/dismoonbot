@@ -1,39 +1,41 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
-module.exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
 
-  var memauth = message.guild.members.get(message.author.id);
-  let HCOROLE = message.guild.roles.find("name", "HCOs").id;
-  let COROLE = message.guild.roles.find("name", "COs").id;
-  let FOROLE = message.guild.roles.find("name", "FOs").id;
-  var title = "";
+  var member = message.guild.member(message.author)
+  var director = message.guild.roles.find("name", "Director").id
+  var cmd = message.guild.roles.find("name", "Commander").id
+  var vcmd = message.guild.roles.find("name", "Vice-Commander").id
+  var fcmd = message.guild.roles.find("name", "Field Commander").id
+  var fvcmd = message.guild.roles.find("name", "Field Vice-Commander").id
+  var firstov = message.guild.roles.find("name", "1st Oversight").id
+  var secondov = message.guild.roles.find("name", "2nd Oversight").id
 
-  if(memauth.roles.has(COROLE)){
-    var title = "Announcement by Commanding Officer"
-  } else if(memauth.roles.has(HCOROLE)){
-    var title = "Announcement by High Commanding Officer"
-  } else if(memauth.roles.has(FOROLE)){
-    var title = "Announcement by Field Officer"
+  var embed = new Discord.RichEmbed();
+
+  embed.setDescription("\n"+args.join(' '))
+  embed.setColor("#0f6bff")
+  embed.setFooter(`Announcement by: ${member.nickname}`, member.avatarURL)
+  embed.setTimestamp()
+
+  if(member.roles.has(director)) {
+      embed.setTitle("Announcement by Director")
+      message.channel.send(embed)
+      message.delete();
+  } else if(member.roles.has(cmd) || member.roles.has(vcmd)) {
+      embed.setTitle("Announcement by Command")
+      message.channel.send(embed)
+      message.delete();
+  } else if(member.roles.has(fcmd) || member.roles.has(fvcmd)) {
+      embed.setTitle("Announcement by Field Command")
+      message.channel.send(embed)
+      message.delete();
+  } else if(member.roles.has(firstov) || member.roles.has(secondov)) {
+      embed.setTitle("Announcement by Oversight")
+      message.channel.send(embed)
+      message.delete();
   } else {
-    var title = "x"
+    message.channel.send(":x: No permissions.")
   }
 
-  if(memauth.roles.has(HCOROLE) || memauth.roles.has(COROLE) || memauth.roles.has(FOROLE)){
-    let embed = new Discord.RichEmbed()
-    .setColor('#30E4FF')
-    .setTitle(title)
-    .setFooter("By: " + memauth.nickname, message.author.avatarURL)
-    .setDescription(args.join(' '))
-    .setTimestamp()
-    message.channel.send(embed)
-    message.delete()
-  } else {
-    message.channel.send('no permissions')
-  }
-
-
-}
-
-module.exports.help = {
-    name: "announce"
 }

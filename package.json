@@ -1,23 +1,14 @@
 {
-  "name": "moonbot",
+  "name": "swatbot",
   "version": "1.0.0",
-  "description": "My bot :D",
+  "description": "The Official Bot of the FG DarkRP SWAT Team",
   "main": "bot.js",
-  "dependencies": {
-    "cleverbot.io": "^1.0.4",
-    "discord.js": "^11.3.0",
-    "isgd": "^1.1.3",
-    "math": "0.0.3",
-    "memory": "0.0.3",
-    "ms": "^2.1.1",
-    "opusscript": "0.0.6",
-    "weather-js": "^2.0.0",
-    "ytdl-core": "^0.20.4"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "LSD",
-  "license": "ISC"
+  "author": "Loorey#1405",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
 }

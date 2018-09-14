@@ -1,2 +1,0 @@
-# moonbotjs
-"# dismoonbot" 

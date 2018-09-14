@@ -1,39 +1,50 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
 exports.run = (client, message, args) => {
 
-  var mem = message.mentions.members.first();
-  var authmem = message.guild.members.get(message.author.id);
-  var vertrain = message.guild.roles.find("name", "Verified Trainer").id;
-  var corole = message.guild.roles.find("name", "COs").id;
-  var hcorole = message.guild.roles.find("name", "HCOs").id;
-  var forole = message.guild.roles.find("name", "FOs").id;
+  var member = message.guild.member(message.author);
+  var totrain1 = message.mentions.members.first();
+  var totrain = message.guild.member(totrain1);
 
-  var rctROLE = message.guild.roles.find("name", "Recruit").id;
-  var enlROLE = message.guild.roles.find("name", "ENLISTED");
-  var pvtROLE = message.guild.roles.find("name", "Private");
-  var soROLE = message.guild.roles.find("name", "Marine SO Unit");
+  var director = message.guild.roles.find("name", "Director").id
+  var cmd = message.guild.roles.find("name", "Commander").id
+  var vcmd = message.guild.roles.find("name", "Vice-Commander").id
+  var fcmd = message.guild.roles.find("name", "Field Commander").id
+  var fvcmd = message.guild.roles.find("name", "Field Vice-Commander").id
+  var firstov = message.guild.roles.find("name", "1st Oversight").id
+  var secondov = message.guild.roles.find("name", "2nd Oversight").id
+  var htrain = message.guild.roles.find("name", "Head Trainer").id
+  var train = message.guild.roles.find("name", "Trainer").id
+  var trainee = message.guild.roles.find("name", "Trainee").id
 
-  if(!mem){
-    message.channel.send('Finishes training of a user (Adds Roles, Removes RCT)\n\nCommand Usage:\n`,,,train <mention>`')
-  }
+  if(!totrain1) return message.channel.send(":x: Please Mention a member to train");
 
-
-  if(authmem.roles.has(vertrain) || authmem.roles.has(corole) || authmem.roles.has(hcorole) || authmem.roles.has(forole)){
-
-  if(mem.roles.has(rctROLE)){
-    mem.addRole(enlROLE)
-    mem.addRole(pvtROLE)
-    mem.addRole(soROLE)
-    mem.removeRole(rctROLE)
-    mem.setNickname(`PVT.  ${mem.user.username}`)
-    message.react('✅')
+  if(!totrain.roles.has(trainee)) {
+    if(member.roles.has(director)) {
+        totrain.roles.add(trainee)
+        message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+        message.delete();
+    } else if(member.roles.has(cmd) || member.roles.has(vcmd)) {
+      totrain.roles.add(trainee)
+      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+      message.delete();
+    } else if(member.roles.has(fcmd) || member.roles.has(fvcmd)) {
+      totrain.roles.add(trainee)
+      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+      message.delete();
+    } else if(member.roles.has(firstov) || member.roles.has(secondov)) {
+      totrain.roles.add(trainee)
+      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+      message.delete();
+    } else if(member.roles.has(htrain) || member.roles.has(train)) {
+      totrain.roles.add(trainee)
+      message.channel.send(`:white_check_mark: ${totrain.username} has been trained by ${member.nickname}`)
+      message.delete();
+    } else {
+      message.channel.send(":x: No permissions")
+    }
   } else {
-    message.channel.send('Mentioned member does not have the Recruit role / is already trained')
-    message.react('❌')
+    message.channel.send(":x: That member already is trained!")
   }
-} else {
-  message.channel.send('no permissions')
-}
 
 }
