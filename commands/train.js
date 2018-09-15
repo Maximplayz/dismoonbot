@@ -6,49 +6,30 @@ exports.run = (client, message, args) => {
   var authmem = message.guild.authmems.get(message.author.id);
 
   var director = message.guild.roles.find("name", "Director").id
-  var cmd = message.guild.roles.find("name", "Commander").id
-  var vcmd = message.guild.roles.find("name", "Vice-Commander").id
-  var fcmd = message.guild.roles.find("name", "Field Commander").id
-  var fvcmd = message.guild.roles.find("name", "Field Vice-Commander").id
-  var firstov = message.guild.roles.find("name", "1st Oversight").id
-  var secondov = message.guild.roles.find("name", "2nd Oversight").id
+  var fos = message.guild.roles.find("name", "FOs").id
+  var hcos = message.guild.roles.find("name", "HCOs").id
+  var cos = message.guild.roles.find("name", "COs").id
   var htrain = message.guild.roles.find("name", "Head Trainer").id
   var train = message.guild.roles.find("name", "Trainer").id
   var trainee = message.guild.roles.find("name", "Trainee").id
+  var enlisted = message.guild.roles.find("name", "ENLISTED").id
 
-  if(!mem) return message.channel.send(":x: Please Mention a Member to train");
+if(!mem) return  message.channel.send(':x: Please Mention a member');
 
-  if(!mem.roles.has(trainee)) {
-    if(authmem.roles.has(director)) {
-        mem.roles.add(trainee)
-        mem.setNickname('Trainee '+mem.username)
-        message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
-        message.delete();
-    } else if(authmem.roles.has(cmd) || authmem.roles.has(vcmd)) {
-      mem.roles.add(trainee)
-      mem.setNickname('Trainee '+mem.username)
-      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
-      message.delete();
-    } else if(authmem.roles.has(fcmd) || authmem.roles.has(fvcmd)) {
-      mem.roles.add(trainee)
-      mem.setNickname('Trainee '+mem.username)
-      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
-      message.delete();
-    } else if(authmem.roles.has(firstov) || authmem.roles.has(secondov)) {
-      mem.roles.add(trainee)
-      mem.setNickname('Trainee '+mem.username)
-      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
-      message.delete();
-    } else if(authmem.roles.has(htrain) || authmem.roles.has(train)) {
-      mem.roles.add(trainee)
-      mem.setNickname('Trainee '+mem.username)
-      message.channel.send(`:white_check_mark: ${mem.username} has been trained by ${authmem.nickname}`)
-      message.delete();
+if(authmem.roles.has(director) || authmem.roles.has(fos) || authmem.roles.has(hcos) || authmem.roles.has(cos) || authmem.roles.has(htrain) || authmem.roles.has(train)) {
+    if(!authmem.roles.has(trainee)) {
+      let enlisted2 = message.guild.roles.find("name", "ENLISTED");
+      let trainee2 = message.guild.roles.find("name", "Trainee");
+      let newname = "Trainee "+mem.username;
+      mem.roles.add(enlisted2)
+      mem.roles.add(trainee2)
+      message.channel.send(`:white_check_mark: **${mem.nickname}** has been trained by **${authmem.nickname}**`)
+      message.delete()
     } else {
-      message.channel.send(":x: No permissions")
+      message.channel.send(":x: That member already is trained")
     }
-  } else {
-    message.channel.send(":x: That Member already is trained!")
-  }
+} else {
+  message.channel.send(":x: No permissions to train");
+}
 
 }
